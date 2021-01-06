@@ -13,12 +13,13 @@ rl.on("line", function (line) {
 });
 
 function halfAdder(a, b) {
-  const [carry, leave] = String(a + b).split("");
-  if (!leave) return [parseInt(carry), 0];
-  else return [parseInt(leave), parseInt(carry)];
+  let sum = a + b;
+  const mod = sum % 10;
+  const carry = (sum - mod) / 10;
+  return [mod, carry];
 }
 
-function fullAdder(a, b, carry) {
+function fullAdder(a = 0, b = 0, carry = 0) {
   const [tmpSum, tmpCarry] = halfAdder(a, b);
   const [finalSum, finalCarry] = halfAdder(carry, tmpSum);
   return [finalSum, tmpCarry + finalCarry];
@@ -29,9 +30,7 @@ function decAdder(a, b) {
   let beforeCarry = 0;
   const [decA, decB] = [a, b].sort((a, b) => b.length - a.length);
   for (let i = 0; i < decA.length; i++) {
-    const charA = decA[i];
-    const charB = decB[i] ? decB[i] : 0;
-    const [sum, carry] = fullAdder(charA, charB, beforeCarry);
+    const [sum, carry] = fullAdder(decA[i], decB[i], beforeCarry);
     sumDec.push(sum);
     beforeCarry = carry;
   }
@@ -54,4 +53,4 @@ function solution(a, b) {
   return sumDec;
 }
 
-console.log(solution("123456789123456789", "123456789123456789"));
+console.log(solution("1", "2"));
