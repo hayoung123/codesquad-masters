@@ -32,28 +32,24 @@ const mapKeyIter = mapKey[Symbol.iterator]();
 
 for (let x of mapKey) console.log(x);
 
-for (let x of mapKeyIter ) console.log(x);
+for (let x of mapKeyIter) console.log(x);
 ```
-
-
 
 ### 이해가 되지 않는 부분
 
-spread syntax도 iterable 객체들이 사용가능 한 것이다.  아래의 예시를 보면 일반 객체인 obj는 String과 달리 안되는 것을 확인할 수 있다. 
+spread syntax도 iterable 객체들이 사용가능 한 것이다. 아래의 예시를 보면 일반 객체인 obj는 String과 달리 안되는 것을 확인할 수 있다.
 
 ```javascript
-let obj = {1:1,2:2,3:3,4:4}
-console.log(...obj) // Found non-callable @@iterator
+let obj = { 1: 1, 2: 2, 3: 3, 4: 4 };
+console.log(...obj); // Found non-callable @@iterator
 
-const str = 'hello'
-console.log(...str) //h e l l o
-
+const str = 'hello';
+console.log(...str); //h e l l o
 ```
 
 근데 아래와 같이 할 때는 왜 될까?
 
 ```javascript
-let copyObj = {...obj}
-console.log(copyObj) //{1: 1, 2: 2, 3: 3, 4: 4}
+let copyObj = { ...obj };
+console.log(copyObj); //{1: 1, 2: 2, 3: 3, 4: 4}
 ```
-
