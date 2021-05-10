@@ -21,3 +21,11 @@ react input태그에 value를 설정해두면 change가 일어나지 않는다. 
 ### 컴포넌트의 `render` 메서드로부터 `null`을 반환하는 것은 생명주기 메서드 호출에 영향을 주지 않습니다. 그 예로 `componentDidUpdate`는 계속해서 호출되게 됩니다.
 
 이말은 그러면 return null보다는 조건부인 경우 컴포넌트를 그냥 호출을하면 안되는 건가? 
+
+
+
+### image background설정
+
+image를 경로로 바로 styled components에 하면 안된다.
+
+import ~~ from 경로 한뒤에 ~~를 사용해야 한다. 
